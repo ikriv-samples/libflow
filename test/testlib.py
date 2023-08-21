@@ -17,8 +17,12 @@ class LibTest(unittest.TestCase):
         self.assertEqual(4, c.random_digit())
 
     def test_random_string(self):
-        with self.assertRaises(NotImplementedError):
-            MyAwesomeClass.random_string(2)
+        random.seed(43)
+        # TODO: this is probably not the best way to test random_string
+        # We should monkey-patch random.rand_int(), so we have control over
+        # actual output
+        self.assertEqual("eK", MyAwesomeClass.random_string(2))
+        self.assertEqual("s7Vm6@c$3V", MyAwesomeClass.random_string(10))
 
 if __name__ == '__main__':
     unittest.main()
