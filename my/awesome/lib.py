@@ -3,8 +3,8 @@ import random
 class MyAwesomeClass:
     @staticmethod
     def random_value():
-        """Returns random integer value"""
-        return 3 # chosen by a dice roll, guaranteed to be random
+        """Returns random integer value up to 2**64"""
+        return random.randint(0, 2**64-1)
 
     @staticmethod
     def random_digit():
