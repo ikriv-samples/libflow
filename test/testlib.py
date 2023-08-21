@@ -16,6 +16,10 @@ class LibTest(unittest.TestCase):
         self.assertEqual(0, c.random_digit())
         self.assertEqual(4, c.random_digit())
 
+    def test_random_string(self):
+        with self.assertRaises(NotImplementedError):
+            MyAwesomeClass.random_string(2)
+
 if __name__ == '__main__':
     unittest.main()
 
