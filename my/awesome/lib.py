@@ -18,13 +18,12 @@ class MyAwesomeClass:
         return random.randint(0, 2**64-1)
 
     @staticmethod
-    def random_digit():
-        """Returns random decimal digit"""
-        return random.randint(0, 9)
+    def random_digit(base = 10):
+        """Returns random digit of given base"""
+        return random.randint(0, base-1)
 
     @staticmethod
     def random_string(length):
         """Returns a random string of given length"""
         nchars = len(_random_string_chars)
         return ''.join( _random_string_chars[random.randint(0,nchars)] for n in range(0, length))
-        
