@@ -40,6 +40,14 @@ class LibTest(unittest.TestCase):
         self.assertEqual("eK", MyAwesomeClass.random_string(2))
         self.assertEqual("s7Vm6@c$3V", MyAwesomeClass.random_string(10))
 
+    def test_random_string_no_symbols(self):
+        random.seed(43)
+        # TODO: this is probably not the best way to test random_string
+        # We should monkey-patch random.rand_int(), so we have control over
+        # actual output
+        self.assertEqual("cs", MyAwesomeClass.random_string(2, allow_symbols=False))
+        self.assertEqual("SWj9DxQSYg", MyAwesomeClass.random_string(10, allow_symbols=False))
+
 
 if __name__ == '__main__':
     unittest.main()

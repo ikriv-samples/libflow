@@ -5,11 +5,14 @@ def _crange(begin, end):
     for c in range(ord(begin), ord(end)+1):
         yield chr(c)
 
-_random_string_chars = list(
+_alphanumeric = list(
     chain(_crange('a','z'), 
           _crange('A','Z'), 
-          _crange('0', '9'),
-          "!@#$%^&*_"))
+          _crange('0', '9')))
+
+_symbols = "!@#$%^&*_"
+
+_alphanumeric_and_symbols = list(chain(_alphanumeric, _symbols))
 
 class MyAwesomeClass:
     @staticmethod
@@ -23,7 +26,8 @@ class MyAwesomeClass:
         return random.randint(0, base-1)
 
     @staticmethod
-    def random_string(length):
+    def random_string(length, *, allow_symbols = True):
         """Returns a random string of given length"""
-        nchars = len(_random_string_chars)
-        return ''.join( _random_string_chars[random.randint(0,nchars)] for n in range(0, length))
+        charset = _alphanumeric_and_symbols if allow_symbols else _alphanumeric
+        nchars = len(charset)
+        return ''.join(charset[random.randint(0,nchars)] for n in range(0, length))
