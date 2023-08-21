@@ -6,7 +6,8 @@ from my.awesome.lib import MyAwesomeClass
 
 class LibTest(unittest.TestCase):
     def test_random(self):
-        self.assertEqual(3, MyAwesomeClass().random_value())
+        random.seed(93)
+        self.assertEqual(15664109486095685021, MyAwesomeClass().random_value())
 
     def test_really_random(self):
         c = MyAwesomeClass()
